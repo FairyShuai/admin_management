@@ -33,9 +33,9 @@ axios({
   url: '/api/user/login',
   method: 'post',
   data: {
-    username: 'admin', 
-    password: '111111'
-  }
+    username: 'admin',
+    password: '111111',
+  },
 })
 
 // 将应用挂在到挂载点上
