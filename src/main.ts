@@ -9,9 +9,6 @@ import 'element-plus/dist/index.css'
 // 配置element-plus国际化
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 
-
-
-
 // 获取应用实例对象
 const app = createApp(App)
 
@@ -26,6 +23,20 @@ import 'virtual:svg-icons-register'
 import GlobalComponent from '@/components'
 // 安装自定义插件
 app.use(GlobalComponent)
+
+// 引入模版的全局样式
+import '@/styles/index.scss'
+
+// 测试代码：测试假接口能否好用
+import axios from 'axios'
+axios({
+  url: '/api/user/login',
+  method: 'post',
+  data: {
+    username: 'admin', 
+    password: '111111'
+  }
+})
 
 // 将应用挂在到挂载点上
 app.mount('#app')

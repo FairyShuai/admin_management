@@ -1,11 +1,17 @@
-<script setup lang="ts">
-
-console.log(import.meta.env)
-</script>
-
 <template>
-  <div>后台管理系统</div>  
-  <svg-icon name="heart" color="red" width="100px" height="100px"></svg-icon>
+  <div>
+<h1>测试sass</h1>
+  </div>
 </template>
 
-<style scoped></style>
+<script setup lang="ts">
+
+</script>
+
+<style scoped lang="scss">
+  div {
+    h1 {
+      color: $base-color;
+    }
+  }
+</style>
