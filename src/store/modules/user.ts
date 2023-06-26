@@ -8,6 +8,7 @@ import type {
 import { reqLogin } from '@/api/user'
 import { UserState } from './types/type'
 import { GET_TOKEN, SET_TOKEN } from '@/utils/token'
+import { ConstantRoute } from '@/router/routes'
 
 //创建用户小仓库
 const useUserStore = defineStore('User', {
@@ -15,7 +16,7 @@ const useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
       token: GET_TOKEN(), //用户唯一标识token
-      // menuRoutes: constantRoute, //仓库存储生成菜单需要数组(路由)
+      menuRoutes: ConstantRoute, //仓库存储生成菜单需要数组(路由)
       username: '',
       avatar: '',
       //存储当前用户是否包含某一个按钮
