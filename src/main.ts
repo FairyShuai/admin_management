@@ -13,6 +13,8 @@ import 'virtual:svg-icons-register'
 // 引入自定义插件对象： 注册整个项目全局组件
 import GlobalComponent from '@/components'
 import router from './router'
+// 引入仓库
+import pinia from './store'
 
 // 获取应用实例对象
 const app = createApp(App)
@@ -24,5 +26,7 @@ app.use(ElementPlus, {
 app.use(GlobalComponent)
 // 注册模板路由
 app.use(router)
+// 安装仓库
+app.use(pinia)
 // 将应用挂在到挂载点上
 app.mount('#app')
