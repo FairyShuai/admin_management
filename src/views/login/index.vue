@@ -12,17 +12,17 @@
         >
           <h1>Hello</h1>
           <!-- <h2>欢迎</h2> -->
-          <el-form-item prop="userName">
+          <el-form-item prop="username">
             <el-input
               :prefix-icon="User"
-              v-model="loginForm.userName"
+              v-model="loginForm.username"
             ></el-input>
           </el-form-item>
-          <el-form-item prop="passWord">
+          <el-form-item prop="password">
             <el-input
               type="password"
               :prefix-icon="Lock"
-              v-model="loginForm.passWord"
+              v-model="loginForm.password"
               show-password
             ></el-input>
           </el-form-item>
@@ -64,8 +64,8 @@ let $route = useRoute()
 let loading = ref(false)
 //收集账号与密码的数据
 let loginForm: LoginForm = reactive({
-  userName: 'admin',
-  passWord: 'atguigu123',
+  username: 'admin',
+  password: 'atguigu123',
 })
 //登录按钮回调
 const login = async () => {
@@ -131,11 +131,11 @@ const rules = {
   //max:文本长度最多多少位
   //message:错误的提示信息
   //trigger:触发校验表单的时机 change->文本发生变化触发校验,blur:失去焦点的时候触发校验规则
-  userName: [
+  username: [
     // { required: true, min: 6, max: 10, message: '账号长度至少六位', trigger: 'change' }
     { trigger: 'change', validator: validatorUserName },
   ],
-  passWord: [
+  password: [
     // { required: true, min: 6, max: 15, message: '密码长度至少6位', trigger: 'change' }
     { trigger: 'change', validator: validatorPassword },
   ],
