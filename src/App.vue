@@ -9,7 +9,7 @@ import { onMounted } from 'vue'
 import { reqLogin } from './api/user'
 
 onMounted(() => {
-  reqLogin({ username: 'admin', password: '111111' })
+  reqLogin({ username: 'admin', password: 'atguigu123' })
 })
 </script>
 

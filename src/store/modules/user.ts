@@ -5,7 +5,7 @@ import type {
   LoginResponseData,
   UserResponseData,
 } from '@/api/user/type'
-import { reqLogin, reqUserInfo } from '@/api/user'
+import { reqLogin, reqUserInfo, reqLogOut } from '@/api/user'
 import { UserState } from './types/type'
 import { GET_TOKEN, REMOVE_TOKEN, SET_TOKEN } from '@/utils/token'
 import { ConstantRoute } from '@/router/routes'
@@ -28,19 +28,19 @@ const useUserStore = defineStore('User', {
     //用户登录的方法
     async userLogin(data: LoginForm) {
       //登录请求
-      const result: LoginResponseData = await reqLogin(data)
+      const result: any = await reqLogin(data)
       //登录请求:成功200->token
       //登录请求:失败201->登录失败错误的信息
       if (result.code == 200) {
         //pinia仓库存储一下token
         //由于pinia|vuex存储数据其实利用js对象
-        this.token = result.data.token as string
+        this.token = result.data as string
         //本地存储持久化存储一份
-        SET_TOKEN(<any>result.data.token)
+        SET_TOKEN(<any>result.data)
         //能保证当前async函数返回一个成功的promise
         return 'ok'
       } else {
-        return Promise.reject(new Error(result.data.message))
+        return Promise.reject(new Error(result.data))
       }
     },
     //获取用户信息方法
@@ -49,8 +49,8 @@ const useUserStore = defineStore('User', {
       const result: UserResponseData = await reqUserInfo()
       //如果获取用户信息成功，存储一下用户信息
       if (result.code == 200) {
-        this.username = (result.data as any)?.checkUser?.username
-        this.avatar = (result.data as any)?.checkUser?.avatar
+        this.username = (result.data as any)?.name
+        this.avatar = (result.data as any)?.avatar
         //   this.buttons = result.data.buttons
         //   //计算当前用户需要展示的异步路由
         //   const userAsyncRoute = filterAsyncRoute(
@@ -71,17 +71,17 @@ const useUserStore = defineStore('User', {
     //退出登录
     async userLogout() {
       // 退出登录请求
-      // const result: any = await reqLogout()
-      // if (result.code == 200) {
-      //目前没有mock接口:退出登录接口(通知服务器本地用户唯一标识失效)
-      this.token = ''
-      this.username = ''
-      this.avatar = ''
-      REMOVE_TOKEN()
-      return 'ok'
-      // } else {
-      //   return Promise.reject(new Error(result.message))
-      // }
+      const result: any = await reqLogOut()
+      if (result.code == 200) {
+        //目前没有mock接口:退出登录接口(通知服务器本地用户唯一标识失效)
+        this.token = ''
+        this.username = ''
+        this.avatar = ''
+        REMOVE_TOKEN()
+        return 'ok'
+      } else {
+        return Promise.reject(new Error(result.message))
+      }
     },
   },
   getters: {},
