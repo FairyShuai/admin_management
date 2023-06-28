@@ -1,12 +1,12 @@
 <template>
   <el-card>
-    <!-- <div class="box">
-      <img :src="userStore.avatar" alt="" class="avatar">
+    <div class="box">
+      <img :src="userStore.avatar" alt="" class="avatar" />
       <div class="bottom">
-        <h3 class="title">{{ getTime() }}好呀{{ userStore.username }}</h3>
+        <h3 class="title">好呀{{ userStore.username }}</h3>
         <p class="subtitle">硅谷甄选运营平台</p>
       </div>
-    </div> -->
+    </div>
   </el-card>
   <div class="bottoms">
     <svg-icon name="welcome" width="600px" height="300px"></svg-icon>
@@ -20,10 +20,6 @@ import { onMounted } from 'vue'
 import useUserStore from '@/store/modules/user'
 //获取存储用户信息的仓库对象
 let userStore = useUserStore()
-
-onMounted(() => {
-  userStore.userInfo()
-})
 </script>
 
 <style scoped lang="scss">

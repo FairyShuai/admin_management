@@ -1,10 +1,7 @@
 <template>
   <div class="layout_container">
     <!-- 左侧菜单 -->
-    <div
-      class="layout_slider"
-      :class="{ fold: LayOutSettingStore.fold ? true : false }"
-    >
+    <div class="layout_slider">
       <Logo></Logo>
       <!-- 展示菜单 -->
       <!-- 滚动组件 -->
@@ -27,6 +24,7 @@
       class="layout_tabbar"
       :class="{ fold: LayOutSettingStore.fold ? true : false }"
     >
+      <!-- layout组件的顶部导航tabbar -->
       <Tabbar></Tabbar>
     </div>
     <!-- 内容展示区域 -->
@@ -62,6 +60,11 @@ let LayOutSettingStore = useLayOutSettingStore()
 let $route = useRoute()
 </script>
 
+<script lang="ts">
+export default {
+  name: 'Layout',
+}
+</script>
 <style scoped lang="scss">
 .layout_container {
   width: 100%;
@@ -81,10 +84,6 @@ let $route = useRoute()
       .el-menu {
         border-right: none;
       }
-    }
-
-    &.fold {
-      width: $base-menu-min-width;
     }
   }
 
