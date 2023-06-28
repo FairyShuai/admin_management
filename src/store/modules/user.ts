@@ -7,7 +7,7 @@ import type {
 } from '@/api/user/type'
 import { reqLogin, reqUserInfo } from '@/api/user'
 import { UserState } from './types/type'
-import { GET_TOKEN, SET_TOKEN } from '@/utils/token'
+import { GET_TOKEN, REMOVE_TOKEN, SET_TOKEN } from '@/utils/token'
 import { ConstantRoute } from '@/router/routes'
 
 //创建用户小仓库
@@ -70,15 +70,15 @@ const useUserStore = defineStore('User', {
     },
     //退出登录
     async userLogout() {
-      //退出登录请求
+      // 退出登录请求
       // const result: any = await reqLogout()
       // if (result.code == 200) {
-      //   //目前没有mock接口:退出登录接口(通知服务器本地用户唯一标识失效)
-      //   this.token = ''
-      //   this.username = ''
-      //   this.avatar = ''
-      //   REMOVE_TOKEN()
-      //   return 'ok'
+      //目前没有mock接口:退出登录接口(通知服务器本地用户唯一标识失效)
+      this.token = ''
+      this.username = ''
+      this.avatar = ''
+      REMOVE_TOKEN()
+      return 'ok'
       // } else {
       //   return Promise.reject(new Error(result.message))
       // }
