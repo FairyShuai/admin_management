@@ -49,7 +49,7 @@
 import { ElMessage, UploadProps, formEmits } from 'element-plus'
 //引入组合式API函数ref
 import { ref, onMounted, reactive, nextTick } from 'vue'
- import {reqHasTrademark} from '@/api/product/trademark'
+import { reqHasTrademark } from '@/api/product/trademark'
 
 //当前页码
 let pageNo = ref<number>(1)
@@ -58,7 +58,7 @@ let limit = ref<number>(10)
 //存储已有品牌数据总数
 let total = ref<number>(100)
 //存储已有品牌的数据
-let trademarkArr = ref<any>([]);
+let trademarkArr = ref<any>([])
 // //控制对话框显示与隐藏
 // let dialogFormVisible = ref<boolean>(false)
 // //定义收集新增品牌数据
@@ -70,14 +70,14 @@ let trademarkArr = ref<any>([]);
 let formRef = ref()
 //获取已有品牌的接口封装为一个函数:在任何情况下向获取数据,调用次函数即可
 const getHasTrademark = async (pager = 1) => {
-    //当前页码
-    pageNo.value = pager;
-    let result = await reqHasTrademark(pageNo.value, limit.value);
-    if (result.code == 200) {
-        //存储已有品牌总个数
-        total.value = result.data.total;
-        trademarkArr.value = result.data.records;
-    }
+  //当前页码
+  pageNo.value = pager
+  let result = await reqHasTrademark(pageNo.value, limit.value)
+  if (result.code == 200) {
+    //存储已有品牌总个数
+    total.value = result.data.total
+    trademarkArr.value = result.data.records
+  }
 }
 // //组件挂载完毕钩子---发一次请求,获取第一页、一页三个已有品牌数据
 // onMounted(() => {
